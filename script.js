@@ -41,6 +41,7 @@ function addItem(name, price) {
     updateUI();
 }
 
+// Reemplazá tu updateUI por esta
 function updateUI() {
     const bar = document.getElementById('cart-bar');
     const totalFinal = subtotal + COSTO_ENVIO;
@@ -52,11 +53,22 @@ function updateUI() {
             <div class="cart-total-info">
                 <span>Subtotal: $${subtotal}</span>
                 <strong>Total: $${totalFinal}</strong>
-                <p class="ship-text">+ Envío $${COSTO_ENVIO} incluido</p>
             </div>
         `;
+    } else {
+        bar.style.display = 'none'; // Oculta la barra si el carrito está vacío
     }
 }
+
+// Agregá esta función nueva al final
+function clearCart() {
+    if (confirm("¿Quieres borrar todo el pedido?")) {
+        cart = [];
+        subtotal = 0;
+        updateUI();
+    }
+}
+
 
 function sendOrder() {
     // Número actualizado de Patric
