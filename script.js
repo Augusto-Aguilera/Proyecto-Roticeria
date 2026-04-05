@@ -15,7 +15,6 @@ let cart = [];
 let subtotal = 0;
 const COSTO_ENVIO = 2500;
 
-// Cargar productos
 const grid = document.getElementById('grid');
 products.forEach(p => {
     grid.innerHTML += `
@@ -41,7 +40,6 @@ function addItem(name, price) {
     updateUI();
 }
 
-// Reemplazá tu updateUI por esta
 function updateUI() {
     const bar = document.getElementById('cart-bar');
     const totalFinal = subtotal + COSTO_ENVIO;
@@ -56,11 +54,10 @@ function updateUI() {
             </div>
         `;
     } else {
-        bar.style.display = 'none'; // Oculta la barra si el carrito está vacío
+        bar.style.display = 'none';
     }
 }
 
-// Agregá esta función nueva al final
 function clearCart() {
     if (confirm("¿Quieres borrar todo el pedido?")) {
         cart = [];
@@ -69,13 +66,23 @@ function clearCart() {
     }
 }
 
-
 function sendOrder() {
-    // Número actualizado de Patric
     const phone = "5492657521775"; 
+    const nombre = document.getElementById('user-name').value;
+    const direccion = document.getElementById('user-address').value;
+
+    if (!nombre || !direccion) {
+        alert("Por favor, completa tu nombre y dirección para el envío.");
+        return;
+    }
+
+    if (cart.length === 0) {
+        alert("¡El carrito está vacío!");
+        return;
+    }
+
     const totalFinal = subtotal + COSTO_ENVIO;
     
-    // Armado del mensaje en formato Lista
     let message = "🍔 *NUEVO PEDIDO | PATRIC SOFT ®*\n";
     message += "--------------------------------------\n\n";
     
@@ -86,7 +93,12 @@ function sendOrder() {
     message += "--------------------------------------\n";
     message += `📦 *Envío:* $${COSTO_ENVIO}\n`;
     message += `💰 *TOTAL A PAGAR: $${totalFinal}*\n\n`;
-    message += "_(Por favor, confirme el pedido para iniciar la cocina)_";
+    
+    message += "👤 *DATOS DEL CLIENTE:*\n";
+    message += `📝 Nombre: ${nombre}\n`;
+    message += `📍 Dirección: ${direccion}\n`;
+    message += "--------------------------------------\n";
+    message += "_(Confirmar pedido para iniciar cocina)_";
 
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
 }
