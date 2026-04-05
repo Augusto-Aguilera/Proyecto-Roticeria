@@ -96,3 +96,21 @@ header p { opacity: 0.7; font-size: 0.9rem; }
 footer { text-align: center; padding: 40px; color: #64748b; font-size: 0.8rem; }
 
 @media (max-width: 480px) { .product-grid { grid-template-columns: 1fr; } }
+.btn-clear {
+    background: #fee2e2;
+    color: #ef4444;
+    border: none;
+    padding: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-clear:hover {
+    background: #ef4444;
+    color: white;
+}
