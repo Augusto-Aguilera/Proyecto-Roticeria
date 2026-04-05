@@ -59,11 +59,22 @@ function updateUI() {
 }
 
 function sendOrder() {
-    const phone = "5492657000000"; 
+    // Número actualizado de Patric
+    const phone = "5492657521775"; 
     const totalFinal = subtotal + COSTO_ENVIO;
-    let message = "🍔 *NUEVO PEDIDO | PATRIC SOFT ®*\n\n";
-    cart.forEach(item => { message += `• ${item.name} ($${item.price})\n`; });
-    message += `\n📦 *Envío:* $${COSTO_ENVIO}`;
-    message += `\n💰 *TOTAL A PAGAR: $${totalFinal}*`;
+    
+    // Armado del mensaje en formato Lista
+    let message = "🍔 *NUEVO PEDIDO | PATRIC SOFT ®*\n";
+    message += "--------------------------------------\n\n";
+    
+    cart.forEach(item => { 
+        message += `✅ *${item.name}* \n   ↳ $${item.price}\n\n`; 
+    });
+    
+    message += "--------------------------------------\n";
+    message += `📦 *Envío:* $${COSTO_ENVIO}\n`;
+    message += `💰 *TOTAL A PAGAR: $${totalFinal}*\n\n`;
+    message += "_(Por favor, confirme el pedido para iniciar la cocina)_";
+
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
 }
