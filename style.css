@@ -28,7 +28,6 @@ header p { opacity: 0.7; font-size: 0.9rem; }
 
 .container { max-width: 1100px; margin: 0 auto; padding: 0 15px; }
 
-/* ESTILOS DATOS DE USUARIO */
 .user-data-box {
     background: var(--glass);
     backdrop-filter: blur(10px);
@@ -66,7 +65,38 @@ header p { opacity: 0.7; font-size: 0.9rem; }
 
 .input-group input:focus { border-color: var(--primary); background: rgba(0,0,0,0.4); }
 
-/* PRODUCTOS */
+.categories-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    overflow-x: auto;
+    padding-bottom: 15px;
+    scrollbar-width: none;
+}
+
+.categories-container::-webkit-scrollbar { display: none; }
+
+.btn-cat {
+    background: var(--glass);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+    padding: 10px 22px;
+    border-radius: 50px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 0.3s;
+    font-weight: 600;
+}
+
+.btn-cat.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-cat:hover {
+    background: rgba(255,255,255,0.1);
+}
+
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -95,7 +125,6 @@ header p { opacity: 0.7; font-size: 0.9rem; }
 }
 .btn-add:hover { background: var(--primary); color: white; }
 
-/* BARRA FLOTANTE */
 .cart-bar {
     position: fixed;
     bottom: 25px;
@@ -138,12 +167,6 @@ footer { text-align: center; padding: 40px; color: #64748b; font-size: 0.8rem; }
 @media (max-width: 600px) { 
     .user-data-box { grid-template-columns: 1fr; }
     .product-grid { grid-template-columns: 1fr; } 
-}
-footer {
-    text-align: center;
-    padding: 60px 20px 40px; 
-    color: #64748b;
-    font-size: 0.8rem;
 }
 
 .footer-content {
